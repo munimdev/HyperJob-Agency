@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HyperJob - Home</title>
+</head>
+<body>
+    <h1>Welcome {{ user }}!</h1>
+    {% if staff %}
+        <h2>Vacancies you created:</h2>
+        {% for vv in vacancies %}
+            <div>
+                <div>
+                    {{ vv.description }}
+                </div>
+                <br>
+            </div>
+            {% empty %}
+                <div>
+                    No vacancies were found
+                </div>
+        {% endfor %}
+    {% endif %}
+ 
+    {% if not staff %}
+        <h2>Resumes you created:</h2>
+    {% for resume in resumes %}
+        <div>
+
+            <div>
+                <ul>
+                <li>
+                    {{ resume.description }}
+                </li>
+                </ul>
+                {% empty %}
+                    <p>You haven't created any resumes yet!</p>
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <form method="post"><br>
+        {% csrf_token %}
+        <input type="submit" id="button" name="button" value="Create">
+    </form>
+</body>
+</html>

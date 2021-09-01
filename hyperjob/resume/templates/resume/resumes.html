@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HyperJob - Resumes</title>
+</head>
+<body>
+    <h2>HyperJob Resumes:</h2>
+    {% for resume in resumes %}
+            <div>
+                <ul>
+                    <li>
+                    {{ resume.author }}: {{ resume.description }}
+                    </li>
+                </ul>
+            </div>
+        {% empty %}
+        <div>No resumes were found.</div>
+    {% endfor %}
+</body>
+</html>
